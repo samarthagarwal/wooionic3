@@ -34,4 +34,23 @@
     </ion-row>
   </ion-grid>
 
+  <ion-list>
+    <ion-item *ngFor="let product of moreProducts" text-wrap>
+      <ion-thumbnail item-left>
+        <img [src]="product.featured_src" />
+      </ion-thumbnail>
+
+      <h2> {{ product.title }} </h2>
+
+      <p>
+        <span [innerHTML]="product.short_description.substr(0, 50) + '...'"></span>
+        <span [innerHTML]="product.price_html"></span>
+      </p>
+
+      <button ion-button icon clear item-right>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+
 </ion-content>

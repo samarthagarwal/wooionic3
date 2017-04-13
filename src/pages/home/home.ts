@@ -11,16 +11,22 @@ export class HomePage {
 
   WooCommerce: any;
   products: any[];
+  moreProducts: any[];
+  page: number;
 
   @ViewChild('productSlides') productSlides: Slides;
 
   constructor(public navCtrl: NavController) {
+
+    this.page = 2;
 
     this.WooCommerce = WC({
       url: "http://samarth.cloudapp.net",
       consumerKey: "ck_b615342c28e3aa9b0b9d384852cda85a82155197",
       consumerSecret: "cs_d75f28e39ae9f06318608cec44fc77dd75ce6427"
     });
+
+    this.loadMoreProducts();
 
     this.WooCommerce.getAsync("products").then( (data) => {
       console.log(JSON.parse(data.body));
@@ -39,6 +45,15 @@ export class HomePage {
 
       this.productSlides.slideNext();
     }, 3000)
+  }
+
+  loadMoreProducts(){
+    this.WooCommerce.getAsync("products?page=" + this.page).then( (data) => {
+      console.log(JSON.parse(data.body));
+      this.moreProducts = JSON.parse(data.body).products;
+    }, (err) => {
+      console.log(err)
+    })
   }
 
 }
