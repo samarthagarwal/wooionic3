@@ -38,6 +38,19 @@ export class ProductsByCategory {
     console.log('ionViewDidLoad ProductsByCategory');
   }
 
-  
+  loadMoreProducts(event) {
+    this.page++;
+    console.log("Getting page " + this.page);
+    this.WooCommerce.getAsync("products?filter[category]=" + this.category.slug + "&page=" + this.page).then((data) => {
+      let temp = (JSON.parse(data.body).products);
+
+      this.products = this.products.concat(JSON.parse(data.body).products)
+      console.log(this.products);
+      event.complete();
+
+      if (temp.length < 10)
+        event.enable(false);
+    })
+  }
 
 }
