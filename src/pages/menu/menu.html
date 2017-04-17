@@ -14,7 +14,7 @@
     </ion-card>
 
     <ion-list>
-      <ion-item *ngFor="let category of categories" text-wrap>
+      <ion-item *ngFor="let category of categories" text-wrap (click)="openCategoryPage(category)">
         <ion-icon [name]="category.icon" item-left large></ion-icon>
         <h2> {{ category.name }} </h2>
         <p> {{ category.description }}</p>
