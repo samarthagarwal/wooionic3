@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import * as WC from 'woocommerce-api';
+import { ProductDetails } from '../product-details/product-details';
 
 @Component({
   selector: 'page-products-by-category',
@@ -51,6 +52,10 @@ export class ProductsByCategory {
       if (temp.length < 10)
         event.enable(false);
     })
+  }
+
+  openProductPage(product){
+    this.navCtrl.push(ProductDetails, {"product": product} );
   }
 
 }

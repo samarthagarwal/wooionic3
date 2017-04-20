@@ -10,7 +10,7 @@
 <ion-content>
 
 <ion-card>
-  <ion-slides autoplay="3000">
+  <ion-slides autoplay="3000" loop="true">
     <ion-slide *ngFor="let image of product.images">
       <img [src]="image.src" />
     </ion-slide>
@@ -33,6 +33,26 @@
   </ion-card-content>
 
 
+</ion-card>
+
+<ion-card *ngIf="product.attributes.length > 0">
+  <ion-card-content>
+    <ion-card-title>
+      Specifications
+    </ion-card-title>
+
+    <ion-grid>
+      <ion-row *ngFor="let att of product.attributes">
+        <ion-col col-4>
+          {{ att.name}}
+        </ion-col>
+        <ion-col col-8>
+          <span *ngFor="let option of att.options"> {{ option }}</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-card-content>
 </ion-card>
 
 </ion-content>
