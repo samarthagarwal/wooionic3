@@ -9,86 +9,90 @@
 
 <ion-content>
 
-<ion-card>
-  <ion-slides autoplay="3000" loop="true">
-    <ion-slide *ngFor="let image of product.images">
-      <img [src]="image.src" />
-    </ion-slide>
-  </ion-slides>
+  <ion-fab right top edge (click)="openCart()">
+    <button ion-fab color="danger"><ion-icon name="cart"></ion-icon></button>
+  </ion-fab>
 
-  <ion-card-content>
-    <ion-card-title>
-      {{ product.title }} &nbsp;
-      <ion-chip *ngFor="let cat of product.categories" style="margin-left: 5px;">
-        <ion-label color="danger"> {{ cat }} </ion-label>
-      </ion-chip>
-    </ion-card-title>
+  <ion-card>
+    <ion-slides autoplay="3000" loop="true">
+      <ion-slide *ngFor="let image of product.images">
+        <img [src]="image.src" />
+      </ion-slide>
+    </ion-slides>
 
-    <p [innerHTML]="product.description"></p>
+    <ion-card-content>
+      <ion-card-title>
+        {{ product.title }} &nbsp;
+        <ion-chip *ngFor="let cat of product.categories" style="margin-left: 5px;">
+          <ion-label color="danger"> {{ cat }} </ion-label>
+        </ion-chip>
+      </ion-card-title>
 
-    <button ion-button icon-left block outline color="danger" (click)="addToCart(product)">
+      <p [innerHTML]="product.description"></p>
+
+      <button ion-button icon-left block outline color="danger" (click)="addToCart(product)">
       <ion-icon name="basket"></ion-icon> Add to Cart for $ {{product.price}}
     </button>
 
-  </ion-card-content>
+    </ion-card-content>
 
 
-</ion-card>
+  </ion-card>
 
-<ion-card *ngIf="product.attributes.length > 0">
-  <ion-card-content>
-    <ion-card-title>
-      Specifications
-    </ion-card-title>
+  <ion-card *ngIf="product.attributes.length > 0">
+    <ion-card-content>
+      <ion-card-title>
+        Specifications
+      </ion-card-title>
 
-    <ion-grid>
-      <ion-row *ngFor="let att of product.attributes">
-        <ion-col col-4>
-          {{ att.name}}
-        </ion-col>
-        <ion-col col-8>
-          <span *ngFor="let option of att.options"> {{ option }}</span>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+      <ion-grid>
+        <ion-row *ngFor="let att of product.attributes">
+          <ion-col col-4>
+            {{ att.name}}
+          </ion-col>
+          <ion-col col-8>
+            <span *ngFor="let option of att.options"> {{ option }}</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
 
-  </ion-card-content>
-</ion-card>
+    </ion-card-content>
+  </ion-card>
 
-<ion-card *ngIf="reviews.length > 0">
-  <ion-card-content>
-    <ion-card-title>
-      Reviews
-    </ion-card-title>
+  <ion-card *ngIf="reviews.length > 0">
+    <ion-card-content>
+      <ion-card-title>
+        Reviews
+      </ion-card-title>
 
-    <ion-grid>
-      <ion-row *ngFor="let review of reviews">
-        <ion-col col-4>
-          <b>{{ review.reviewer_name }}</b><br/>
-          <span *ngIf="review.rating >= 1">
+      <ion-grid>
+        <ion-row *ngFor="let review of reviews">
+          <ion-col col-4>
+            <b>{{ review.reviewer_name }}</b><br/>
+            <span *ngIf="review.rating >= 1">
             <ion-icon style="color: #d4af37" small name="star"></ion-icon>
           </span>
-          <span *ngIf="review.rating >= 2">
+            <span *ngIf="review.rating >= 2">
             <ion-icon style="color: #d4af37" small name="star"></ion-icon>
           </span>
-          <span *ngIf="review.rating >= 3">
+            <span *ngIf="review.rating >= 3">
             <ion-icon style="color: #d4af37" small name="star"></ion-icon>
           </span>
-          <span *ngIf="review.rating >= 4">
+            <span *ngIf="review.rating >= 4">
             <ion-icon style="color: #d4af37" small name="star"></ion-icon>
           </span>
-          <span *ngIf="review.rating >= 5">
+            <span *ngIf="review.rating >= 5">
             <ion-icon style="color: #d4af37" small name="star"></ion-icon>
           </span>
 
-        </ion-col>
-        <ion-col col-8>
-          {{  review.review }}
-        </ion-col>
+          </ion-col>
+          <ion-col col-8>
+            {{ review.review }}
+          </ion-col>
 
-      </ion-row>
-    </ion-grid>
-  </ion-card-content>
-</ion-card>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
