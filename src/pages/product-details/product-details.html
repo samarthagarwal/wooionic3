@@ -26,8 +26,8 @@
 
     <p [innerHTML]="product.description"></p>
 
-    <button ion-button icon-left block outline color="danger">
-      <ion-icon name="basket"></ion-icon> Add to Cart
+    <button ion-button icon-left block outline color="danger" (click)="addToCart(product)">
+      <ion-icon name="basket"></ion-icon> Add to Cart for $ {{product.price}}
     </button>
 
   </ion-card-content>
