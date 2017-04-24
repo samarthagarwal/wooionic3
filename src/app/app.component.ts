@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Menu } from '../pages/menu/menu';
+import { Signup } from '../pages/signup/signup';
 
 @Component({
   templateUrl: 'app.html'
@@ -11,7 +12,7 @@ import { Menu } from '../pages/menu/menu';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = Menu;
+  rootPage: any = Signup//Menu;
 
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {

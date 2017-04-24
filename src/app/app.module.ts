@@ -11,6 +11,7 @@ import { Cart } from '../pages/cart/cart';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Signup } from '../pages/signup/signup';
 
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -21,7 +22,8 @@ import { IonicStorageModule } from '@ionic/storage';
     Menu,
     ProductsByCategory,
     ProductDetails,
-    Cart
+    Cart,
+    Signup
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { IonicStorageModule } from '@ionic/storage';
     Menu,
     ProductsByCategory,
     ProductDetails,
-    Cart
+    Cart,
+    Signup
   ],
   providers: [
     StatusBar,
