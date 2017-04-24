@@ -34,6 +34,52 @@ export class Signup {
     this.billing_shipping_same = !this.billing_shipping_same;
   }
 
+  checkEmail(){
+
+    let validEmail = false;
+
+    let reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if(reg.test(this.newUser.email)){
+      //email looks valid
+
+      this.WooCommerce.getAsync('customers/email/' + this.newUser.email).then( (data) => {
+        let res = (JSON.parse(data.body));
+
+        if(res.errors){
+          validEmail = true;
+
+          this.toastCtrl.create({
+            message: "Congratulations. Email is good to go.",
+            duration: 3000
+          }).present();
+
+        } else {
+          validEmail = false;
+
+          this.toastCtrl.create({
+            message: "Email already registered. Please check.",
+            showCloseButton: true
+          }).present();
+        }
+
+        console.log(validEmail);
+
+      })
+
+
+
+    } else {
+      validEmail = false;
+      this.toastCtrl.create({
+        message: "Invalid Email. Please check.",
+        showCloseButton: true
+      }).present();
+      console.log(validEmail);
+    }
+
+  }
+
   
 
 }
