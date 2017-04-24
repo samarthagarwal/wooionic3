@@ -19,6 +19,13 @@
         <h2> {{ category.name }} </h2>
         <p> {{ category.description }}</p>
       </ion-item>
+
+      <ion-item (click)="openPage('signup')" menuClose>
+        <ion-icon name="md-clipboard" item-left large></ion-icon>
+        <h2>Sign Up</h2>
+        <p>For a new account</p>
+      </ion-item>
+
     </ion-list>
   </ion-content>
 

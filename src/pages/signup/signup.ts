@@ -80,6 +80,72 @@ export class Signup {
 
   }
 
-  
+  signup(){
+
+      let customerData = {
+        customer : {}
+      }
+
+      customerData.customer = {
+        "email": this.newUser.email,
+        "first_name": this.newUser.first_name,
+        "last_name": this.newUser.last_name,
+        "username": this.newUser.username,
+        "password": this.newUser.password,
+        "billing_address": {
+          "first_name": this.newUser.first_name,
+          "last_name": this.newUser.last_name,
+          "company": "",
+          "address_1": this.newUser.billing_address.address_1,
+          "address_2": this.newUser.billing_address.address_2,
+          "city": this.newUser.billing_address.city,
+          "state": this.newUser.billing_address.state,
+          "postcode": this.newUser.billing_address.postcode,
+          "country": this.newUser.billing_address.country,
+          "email": this.newUser.email,
+          "phone": this.newUser.billing_address.phone
+        },
+        "shipping_address": {
+          "first_name": this.newUser.first_name,
+          "last_name": this.newUser.last_name,
+          "company": "",
+          "address_1": this.newUser.shipping_address.address_1,
+          "address_2": this.newUser.shipping_address.address_2,
+          "city": this.newUser.shipping_address.city,
+          "state": this.newUser.shipping_address.state,
+          "postcode": this.newUser.shipping_address.postcode,
+          "country": this.newUser.shipping_address.country
+        }
+      }
+
+      if(this.billing_shipping_same){
+        this.newUser.shipping_address = this.newUser.shipping_address;
+      }
+
+      this.WooCommerce.postAsync('customers', customerData).then( (data) => {
+
+        let response = (JSON.parse(data.body));
+
+        if(response.customer){
+          this.alertCtrl.create({
+            title: "Account Created",
+            message: "Your account has been created successfully! Please login to proceed.",
+            buttons: [{
+              text: "Login",
+              handler: ()=> {
+                //TODO
+              }
+            }]
+          }).present();
+        } else if(response.errors){
+          this.toastCtrl.create({
+            message: response.errors[0].message,
+            showCloseButton: true
+          }).present();
+        }
+
+      })
+
+    }
 
 }
