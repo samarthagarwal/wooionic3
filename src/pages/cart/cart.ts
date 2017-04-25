@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { Checkout } from '../checkout/checkout';
+import { Login } from '../login/login';
 
 @Component({
   selector: 'page-cart',

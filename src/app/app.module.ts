@@ -12,6 +12,8 @@ import { Cart } from '../pages/cart/cart';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Signup } from '../pages/signup/signup';
+import { Login } from '../pages/login/login';
+import { HttpModule } from '@angular/http';
 
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -23,10 +25,12 @@ import { IonicStorageModule } from '@ionic/storage';
     ProductsByCategory,
     ProductDetails,
     Cart,
-    Signup
+    Signup,
+    Login
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -38,7 +42,8 @@ import { IonicStorageModule } from '@ionic/storage';
     ProductsByCategory,
     ProductDetails,
     Cart,
-    Signup
+    Signup,
+    Login
   ],
   providers: [
     StatusBar,

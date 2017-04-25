@@ -20,10 +20,35 @@
         <p> {{ category.description }}</p>
       </ion-item>
 
-      <ion-item (click)="openPage('signup')" menuClose>
+      <ion-item-divider color="danger">Account</ion-item-divider>
+      <ion-item (click)="openPage('signup')" menuClose *ngIf="!loggedIn">
         <ion-icon name="md-clipboard" item-left large></ion-icon>
         <h2>Sign Up</h2>
         <p>For a new account</p>
+      </ion-item>
+
+      <ion-item (click)="openPage('login')" menuClose *ngIf="!loggedIn">
+        <ion-icon name="log-in" item-left large></ion-icon>
+        <h2>Login</h2>
+        <p>Using email and password</p>
+      </ion-item>
+
+      <ion-item *ngIf="loggedIn" menuClose>
+        <ion-icon name="contact" item-left large></ion-icon>
+        <h2>{{ (this.user.firstname == '' ? this.user.username : this.user.firstname) || "" }}</h2>
+        <p>Welcome</p>
+      </ion-item>
+
+      <ion-item *ngIf="loggedIn" (click)="openPage('cart')" menuClose>
+        <ion-icon name="cart" item-left large></ion-icon>
+        <h2>Your Cart</h2>
+        <p>Check items in your cart</p>
+      </ion-item>
+
+      <ion-item *ngIf="loggedIn" (click)="openPage('logout')" menuClose>
+        <ion-icon name="log-out" item-left large></ion-icon>
+        <h2>Logout</h2>
+        <p>of your Account</p>
       </ion-item>
 
     </ion-list>
