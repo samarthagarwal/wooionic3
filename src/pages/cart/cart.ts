@@ -67,4 +67,16 @@ export class Cart {
     this.viewCtrl.dismiss();
   }
 
+  checkout(){
+
+    this.storage.get("userLoginInfo").then( (data) => {
+      if(data != null){
+        this.navCtrl.push(Checkout);
+      } else {
+        this.navCtrl.push(Login, {next: Checkout})
+      }
+    })
+
+  }
+
 }
