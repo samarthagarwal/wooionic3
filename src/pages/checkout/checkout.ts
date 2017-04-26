@@ -60,6 +60,65 @@ export class Checkout {
 
   }
 
-  
+  placeOrder(){
+
+    let orderItems: any[] = [];
+    let data: any = {};
+
+    let paymentData: any = {};
+
+    this.paymentMethods.forEach( (element, index) => {
+      if(element.method_id == this.paymentMethod){
+        paymentData = element;
+      }
+    });
+
+
+    data = {
+      payment_details : {
+        method_id: paymentData.method_id,
+        method_title: paymentData.method_title,
+        paid: true
+      },
+
+      billing_address: this.newOrder.billing_address,
+      shipping_address: this.newOrder.shipping_address,
+      customer_id: this.userInfo.id || '',
+      line_items: orderItems
+    };
+
+
+    if(paymentData.method_id == "paypal"){
+      //TODO
+
+    } else {
+
+      this.storage.get("cart").then( (cart) => {
+
+        cart.forEach( (element, index) => {
+          orderItems.push({
+            product_id: element.product.id,
+            quantity: element.qty
+          });
+        });
+
+        data.line_items = orderItems;
+
+        let orderData: any = {};
+
+        orderData.order = data;
+
+        this.WooCommerce.postAsync("orders", orderData).then( (data) => {
+
+          console.log(JSON.parse(data.body).order);
+
+        })
+
+      })
+
+    }
+
+
+  }
 
 }
