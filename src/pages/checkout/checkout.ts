@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import * as WC from 'woocommerce-api';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-checkout',
@@ -16,7 +17,7 @@ export class Checkout {
   billing_shipping_same: boolean;
   userInfo: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public alertCtrl: AlertController) {
     this.newOrder = {};
     this.newOrder.billing_address = {};
     this.newOrder.shipping_address = {};
@@ -110,7 +111,18 @@ export class Checkout {
 
         this.WooCommerce.postAsync("orders", orderData).then( (data) => {
 
-          console.log(JSON.parse(data.body).order);
+          let response = (JSON.parse(data.body).order);
+
+          this.alertCtrl.create({
+            title: "Order Placed Successfully",
+            message: "Your order has been placed successfully. Your order number is " + response.order_number,
+            buttons: [{
+              text: "OK",
+              handler: () => {
+                this.navCtrl.setRoot(HomePage);
+              }
+            }]
+          }).present();
 
         })
 
