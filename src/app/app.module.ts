@@ -15,6 +15,7 @@ import { Signup } from '../pages/signup/signup';
 import { Login } from '../pages/login/login';
 import { Checkout } from '../pages/checkout/checkout';
 import { HttpModule } from '@angular/http';
+import { PayPal } from '@ionic-native/paypal';
 
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -51,6 +52,7 @@ import { IonicStorageModule } from '@ionic/storage';
   providers: [
     StatusBar,
     SplashScreen,
+    PayPal,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
