@@ -1,6 +1,6 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
+  <ion-header hidden>
+    <ion-toolbar color="danger">
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -13,7 +13,10 @@
       <div class="card-subtitle">Keep Shopping</div>
     </ion-card>
 
+
     <ion-list>
+      <ion-item-divider color="danger">Categories</ion-item-divider>
+
       <ion-item *ngFor="let category of categories" text-wrap (click)="openCategoryPage(category)" menuClose>
         <ion-icon [name]="category.icon" item-left large></ion-icon>
         <h2> {{ category.name }} </h2>
@@ -21,6 +24,7 @@
       </ion-item>
 
       <ion-item-divider color="danger">Account</ion-item-divider>
+
       <ion-item (click)="openPage('signup')" menuClose *ngIf="!loggedIn">
         <ion-icon name="md-clipboard" item-left large></ion-icon>
         <h2>Sign Up</h2>

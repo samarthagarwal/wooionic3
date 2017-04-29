@@ -18,6 +18,7 @@ import { HttpModule } from '@angular/http';
 import { PayPal } from '@ionic-native/paypal';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { OneSignal } from "@ionic-native/onesignal";
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     PayPal,
+    OneSignal,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
