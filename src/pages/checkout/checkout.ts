@@ -3,6 +3,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import * as WC from 'woocommerce-api';
 import { HomePage } from '../home/home';
+import { Menu } from '../menu/menu';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 
 @Component({
@@ -133,7 +134,7 @@ export class Checkout {
                   buttons: [{
                     text: "OK",
                     handler: () => {
-                      this.navCtrl.setRoot(HomePage);
+                      this.navCtrl.push(HomePage);
                     }
                   }]
                 }).present();
