@@ -16,9 +16,10 @@ import { Login } from '../pages/login/login';
 import { Checkout } from '../pages/checkout/checkout';
 import { HttpModule } from '@angular/http';
 import { PayPal } from '@ionic-native/paypal';
-
+import { SearchPage } from '../pages/search/search';
 import { IonicStorageModule } from '@ionic/storage';
 import { OneSignal } from "@ionic-native/onesignal";
+import { WooCommerceProvider } from '../providers/woocommerce/woocommerce';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { OneSignal } from "@ionic-native/onesignal";
     Cart,
     Signup,
     Login,
-    Checkout
+    Checkout,
+    SearchPage
   ],
   imports: [
     BrowserModule,
@@ -48,14 +50,15 @@ import { OneSignal } from "@ionic-native/onesignal";
     Cart,
     Signup,
     Login,
-    Checkout
+    Checkout,
+    SearchPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     PayPal,
     OneSignal,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler}, WooCommerceProvider
   ]
 })
 export class AppModule {}

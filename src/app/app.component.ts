@@ -30,19 +30,19 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      this.oneSignal.startInit('b019dab9-5078-40eb-a958-df477ef9b220', '706507838730');
+      // this.oneSignal.startInit('b019dab9-5078-40eb-a958-df477ef9b220', '706507838730');
 
-      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+      // this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
 
-      this.oneSignal.handleNotificationReceived().subscribe(() => {
-        // do something when notification is received
-      });
+      // this.oneSignal.handleNotificationReceived().subscribe(() => {
+      //   // do something when notification is received
+      // });
 
-      this.oneSignal.handleNotificationOpened().subscribe(() => {
-        // do something when a notification is opened
-      });
+      // this.oneSignal.handleNotificationOpened().subscribe(() => {
+      //   // do something when a notification is opened
+      // });
 
-      this.oneSignal.endInit();
+      // this.oneSignal.endInit();
 
 
     });

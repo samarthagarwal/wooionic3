@@ -22,8 +22,8 @@ export class ProductDetails {
 
     this.WooCommerce = WC({
       url: "http://samarth.cloudapp.net",
-      consumerKey: "ck_b615342c28e3aa9b0b9d384852cda85a82155197",
-      consumerSecret: "cs_d75f28e39ae9f06318608cec44fc77dd75ce6427"
+      consumerKey: "ck_d6c5feec9ea1c407d2f91661c5137c6e3e48ae3b",
+      consumerSecret: "cs_de8e6cf03a5afd10491dfb1756415ac5a0169ae8"
     });
 
 

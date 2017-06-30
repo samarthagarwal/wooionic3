@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ToastController, AlertController, Events } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
 
@@ -12,7 +12,7 @@ export class Login {
   username: string;
   password: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public toastCtrl: ToastController, public storage: Storage, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public toastCtrl: ToastController, public storage: Storage, public alertCtrl: AlertController, public events: Events) {
 
     this.username = "";
     this.password = "";
@@ -44,6 +44,9 @@ export class Login {
           buttons: [{
             text: "OK",
             handler: () => {
+
+              this.events.publish("updateMenu");
+
               if(this.navParams.get("next")){
                 this.navCtrl.push(this.navParams.get("next"));
               } else {

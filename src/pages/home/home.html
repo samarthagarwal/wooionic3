@@ -5,6 +5,10 @@
     </button>
     <ion-title>Home</ion-title>
   </ion-navbar>
+
+  <ion-toolbar color="danger">
+    <ion-searchbar [(ngModel)]="searchQuery" (search)="onSearch($event)"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content no-padding>

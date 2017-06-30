@@ -3,6 +3,8 @@ import { NavController, Slides, ToastController } from 'ionic-angular';
 import { ProductDetails } from '../product-details/product-details';
 
 import * as WC from 'woocommerce-api';
+import { WooCommerceProvider } from '../../providers/woocommerce/woocommerce';
+import { SearchPage } from "../search/search";
 
 @Component({
   selector: 'page-home',
@@ -14,18 +16,15 @@ export class HomePage {
   products: any[];
   moreProducts: any[];
   page: number;
+  searchQuery: string = "";
 
   @ViewChild('productSlides') productSlides: Slides;
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, private woocommerce: WooCommerceProvider) {
 
     this.page = 2;
 
-    this.WooCommerce = WC({
-      url: "http://samarth.cloudapp.net",
-      consumerKey: "ck_b615342c28e3aa9b0b9d384852cda85a82155197",
-      consumerSecret: "cs_d75f28e39ae9f06318608cec44fc77dd75ce6427"
-    });
+    this.WooCommerce = this.woocommerce.initialize();
 
     this.loadMoreProducts(null);
 
@@ -85,6 +84,12 @@ export class HomePage {
 
   openProductPage(product){
     this.navCtrl.push(ProductDetails, {"product": product} );
+  }
+
+  onSearch(event){
+    if(this.searchQuery.length > 0){
+      this.navCtrl.push(SearchPage, {"searchQuery": this.searchQuery});
+    }
   }
 
 }
