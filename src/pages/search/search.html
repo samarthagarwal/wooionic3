@@ -14,5 +14,37 @@
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let product of products" text-wrap  (click)="openProductPage(product)">
+      <ion-thumbnail item-left>
+        <img [src]="product.featured_src" />
+      </ion-thumbnail>
 
+      <h2> {{ product.title }} </h2>
+
+      <p>
+        <span [innerHTML]="product.short_description.substr(0, 50) + '...'"></span>
+        <span [innerHTML]="product.price_html"></span>
+        <span *ngIf="product.average_rating >= 1">
+          <ion-icon style="color: #d4af37" small name="star"></ion-icon>
+        </span>
+        <span *ngIf="product.average_rating >= 2">
+          <ion-icon style="color: #d4af37" small name="star"></ion-icon>
+        </span>
+        <span *ngIf="product.average_rating >= 3">
+          <ion-icon style="color: #d4af37" small name="star"></ion-icon>
+        </span>
+        <span *ngIf="product.average_rating >= 4">
+          <ion-icon style="color: #d4af37" small name="star"></ion-icon>
+        </span>
+        <span *ngIf="product.average_rating >= 5">
+          <ion-icon style="color: #d4af37" small name="star"></ion-icon>
+        </span>
+      </p>
+
+      <button ion-button icon clear item-right>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
 </ion-content>
