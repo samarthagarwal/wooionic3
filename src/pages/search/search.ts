@@ -34,4 +34,25 @@ export class SearchPage {
     console.log('ionViewDidLoad SearchPage');
   }
 
+  loadMoreProducts(event){
+
+    this.WooCommerce.getAsync("products?filter[q]=" + this.searchQuery + "&page=" + this.page).then((searchData) => {
+      this.products = this.products.concat(JSON.parse(searchData.body).products);
+
+      if(JSON.parse(searchData.body).products.length < 10){
+        event.enable(false);
+
+        this.toastCtrl.create({
+          message: "No more products!",
+          duration: 5000
+        }).present();
+
+      }
+
+      event.complete();
+      this.page ++;
+
+    });
+  }
+
 }
