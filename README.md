@@ -6,11 +6,9 @@ WooIonic is an Ionic 3 Apps built for a Udemy Course [Ionic 3 Apps for WooCommer
 
 # SCREENSHOTS
 
-![Screenshot1](http://image.prntscr.com/image/56439d78c08546c09bb0c956f01e1e2b.png)]
-
-![Screenshot1](http://image.prntscr.com/image/db972d8d50a647c3ab5c9b9769d6b68f.png)]
-
-![Screenshot1](http://image.prntscr.com/image/60be336612a1419295580bc41eb89d28.png)]
+| ![Screenshot1](http://i.imgur.com/EK4Eddd.jpg) | ![Screenshot2](http://i.imgur.com/9bwruUm.jpg) | ![Screenshot3](http://i.imgur.com/qflN5wj.jpg) |
+| ------ | ------ | ------ |
+|  |  |  |
 
 Project by Samarth Agarwal
 
