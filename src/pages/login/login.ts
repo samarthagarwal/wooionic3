@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ToastController, AlertController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController, Events } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
 
+@IonicPage({})
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',

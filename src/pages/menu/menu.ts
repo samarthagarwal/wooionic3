@@ -1,13 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, Events } from 'ionic-angular';
-import { HomePage } from '../home/home';
-import { Signup } from '../signup/signup';
-import { Login } from '../login/login';
+// import { HomePage } from '../home/home';
+// import { Signup } from '../signup/signup';
+// import { Login } from '../login/login';
 import * as WC from 'woocommerce-api';
-import { ProductsByCategory } from '../products-by-category/products-by-category'
+// import { ProductsByCategory } from '../products-by-category/products-by-category'
 import { Storage } from '@ionic/storage';
 import { Cart } from '../cart/cart';
 
+@IonicPage({})
 @Component({
   selector: 'page-menu',
   templateUrl: 'menu.html',
@@ -22,7 +23,7 @@ export class Menu {
   user: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public modalCtrl: ModalController, private events: Events) {
-    this.homePage = HomePage
+    this.homePage = 'HomePage';
     this.categories = [];
     this.user = {};
 
@@ -109,16 +110,16 @@ export class Menu {
 
   openCategoryPage(category) {
 
-    this.childNavCtrl.setRoot(ProductsByCategory, { "category": category });
+    this.childNavCtrl.setRoot('ProductsByCategory', { "category": category });
 
   }
 
   openPage(pageName: string) {
     if (pageName == "signup") {
-      this.navCtrl.push(Signup);
+      this.navCtrl.push('Signup');
     }
     if (pageName == "login") {
-      this.navCtrl.push(Login);
+      this.navCtrl.push('Login');
     }
     if (pageName == 'logout') {
       this.storage.remove("userLoginInfo").then(() => {
