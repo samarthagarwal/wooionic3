@@ -27,8 +27,8 @@ export class HomePage {
 
     this.WooCommerce = WC({
       url: "http://samarth.southeastasia.cloudapp.azure.com",
-      consumerKey: "ck_a55da2f5918a380ed8565ba180fb04f4ec67f304",
-      consumerSecret: "cs_3a5776160220af80f004a6983942fc5e06de22a4"
+      consumerKey: "ck_978c83dd335e861046f05d4b5ae020ff00667044",
+      consumerSecret: "cs_f06f888d7d3d9e02a09b4d40624f222af7b12bc9"
     });
 
     this.loadMoreProducts(null);

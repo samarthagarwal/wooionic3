@@ -62,7 +62,7 @@ export class Menu {
 
       for (let i = 0; i < temp.length; i++){
         for (let j = 0; j < this.categories.length; j++){
-          console.log("Checking " + j + " " + i)
+          //console.log("Checking " + j + " " + i)
           if(this.categories[j].id == temp[i].parent){
             this.categories[j].subCategories.push(temp[i]);
           }
