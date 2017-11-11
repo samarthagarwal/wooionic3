@@ -21,9 +21,9 @@ export class ProductsByCategory {
     this.category = this.navParams.get("category");
 
     this.WooCommerce = WC({
-      url: "http://samarth.cloudapp.net",
-      consumerKey: "ck_d6c5feec9ea1c407d2f91661c5137c6e3e48ae3b",
-      consumerSecret: "cs_de8e6cf03a5afd10491dfb1756415ac5a0169ae8"
+      url: "http://samarth.southeastasia.cloudapp.azure.com",
+      consumerKey: "ck_a55da2f5918a380ed8565ba180fb04f4ec67f304",
+      consumerSecret: "cs_3a5776160220af80f004a6983942fc5e06de22a4"
     });
 
 

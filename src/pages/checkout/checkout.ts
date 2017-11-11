@@ -33,9 +33,9 @@ export class Checkout {
       { method_id: "paypal", method_title: "PayPal" }];
 
     this.WooCommerce = WC({
-      url: "http://samarth.cloudapp.net",
-      consumerKey: "ck_b615342c28e3aa9b0b9d384852cda85a82155197",
-      consumerSecret: "cs_d75f28e39ae9f06318608cec44fc77dd75ce6427"
+      url: "http://samarth.southeastasia.cloudapp.azure.com",
+      consumerKey: "ck_a55da2f5918a380ed8565ba180fb04f4ec67f304",
+      consumerSecret: "cs_3a5776160220af80f004a6983942fc5e06de22a4"
     });
 
     this.storage.get("userLoginInfo").then((userLoginInfo) => {

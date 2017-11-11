@@ -17,11 +17,22 @@
     <ion-list>
       <ion-item-divider color="danger">Categories</ion-item-divider>
 
-      <ion-item *ngFor="let category of categories" text-wrap (click)="openCategoryPage(category)" menuClose>
-        <ion-icon [name]="category.icon" item-left large></ion-icon>
-        <h2> {{ category.name }} </h2>
-        <p> {{ category.description }}</p>
-      </ion-item>
+      <ion-card *ngFor="let category of categories">
+        <ion-item color="light" text-wrap (click)="openCategoryPage(category)" menuClose>
+          <ion-icon [name]="category.icon" item-left large></ion-icon>
+          <h2> {{ category.name }} </h2>
+          <p> {{ category.description }}</p>
+        </ion-item>
+
+        <!-- Optional Subcategories Display -->
+
+        <ion-item *ngFor="let sub of category.subCategories" text-wrap (click)="openCategoryPage(sub)" menuClose>
+          <ion-icon name="arrow-forward" item-left large></ion-icon>
+          <h2> {{ sub.name }} </h2>
+          <p> {{ sub.description }}</p>
+
+        </ion-item>
+      </ion-card>
 
       <ion-item-divider color="danger">Account</ion-item-divider>
 

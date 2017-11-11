@@ -22,7 +22,7 @@ export class Login {
 
   login(){
 
-    this.http.get("http://samarth.cloudapp.net/api/auth/generate_auth_cookie/?insecure=cool&username=" + this.username + "&password=" + this.password)
+    this.http.get("http://samarth.southeastasia.cloudapp.azure.com/api/auth/generate_auth_cookie/?insecure=cool&username=" + this.username + "&password=" + this.password)
     .subscribe( (res) => {
       console.log(res.json());
 

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { Checkout } from '../checkout/checkout';
-import { Login } from '../login/login';
+// import { Checkout } from '../checkout/checkout';
+// import { Login } from '../login/login';
 
 @Component({
   selector: 'page-cart',
@@ -71,9 +71,9 @@ export class Cart {
 
     this.storage.get("userLoginInfo").then( (data) => {
       if(data != null){
-        this.navCtrl.push(Checkout);
+        this.navCtrl.push('Checkout');
       } else {
-        this.navCtrl.push(Login, {next: Checkout})
+        this.navCtrl.push('Login', {next: 'Checkout'})
       }
     })
 
