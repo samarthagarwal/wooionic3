@@ -29,6 +29,7 @@ export class Signup {
     });
   }
 
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad Signup');
   }
