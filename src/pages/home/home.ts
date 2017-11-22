@@ -26,9 +26,9 @@ export class HomePage {
     this.page = 2;
 
     this.WooCommerce = WC({
-      url: "http://samarth.southeastasia.cloudapp.azure.com",
-      consumerKey: "ck_978c83dd335e861046f05d4b5ae020ff00667044",
-      consumerSecret: "cs_f06f888d7d3d9e02a09b4d40624f222af7b12bc9"
+      url: "http://67c26ee3.ngrok.io",
+      consumerKey: "ck_e1c614aa631216a299e23fe592cdb72669200566",
+      consumerSecret: "cs_6f8c8055c349d966ece12115671f24ef9af3da63"
     });
 
     this.loadMoreProducts(null);
@@ -39,6 +39,10 @@ export class HomePage {
     }, (err) => {
       console.log(err)
     })
+
+    this.WooCommerce.get('products/22/reviews', function (err, data, res) {
+      console.log(res);
+    });
 
   }
 
@@ -86,6 +90,7 @@ export class HomePage {
       console.log(err)
     })
   }
+
 
   openProductPage(product){
     this.navCtrl.push('ProductDetails', {"product": product} );

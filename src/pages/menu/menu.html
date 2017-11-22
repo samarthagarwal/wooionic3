@@ -9,30 +9,23 @@
 
     <ion-card>
       <img src="./assets/images/rock.png" />
-      <div class="card-title">WOOIONIC</div>
-      <div class="card-subtitle">Keep Shopping</div>
+      <div class="card-title">Hermes</div>
+      <div class="card-subtitle">A simple to use shopping and rating app</div>
     </ion-card>
 
 
     <ion-list>
-      <ion-item-divider color="danger">Categories</ion-item-divider>
-
-      <ion-card *ngFor="let category of categories">
-        <ion-item color="light" text-wrap (click)="openCategoryPage(category)" menuClose>
-          <ion-icon [name]="category.icon" item-left large></ion-icon>
-          <h2> {{ category.name }} </h2>
-          <p> {{ category.description }}</p>
-        </ion-item>
-
-        <!-- Optional Subcategories Display -->
-
-        <ion-item *ngFor="let sub of category.subCategories" text-wrap (click)="openCategoryPage(sub)" menuClose>
-          <ion-icon name="arrow-forward" item-left large></ion-icon>
-          <h2> {{ sub.name }} </h2>
-          <!-- <p> {{ sub.description }}</p> -->
-
-        </ion-item>
-      </ion-card>
+      <ion-item-divider color="danger">Navigation</ion-item-divider>
+	  <ion-item (click)="openPage('signup')" menuClose *ngIf="!loggedIn">
+        <ion-icon name="md-clipboard" item-left large></ion-icon>
+        <h2>Home</h2>
+        <p>Return Back to Main Page</p>
+      </ion-item>
+	  <ion-item (click)="openPage('signup')" menuClose *ngIf="!loggedIn">
+        <ion-icon name="md-clipboard" item-left large></ion-icon>
+        <h2>Leave a Rating</h2>
+        <p>Browse your purchase history</p>
+      </ion-item>
 
       <ion-item-divider color="danger">Account</ion-item-divider>
 

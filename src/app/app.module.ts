@@ -21,6 +21,9 @@ import { IonicStorageModule } from '@ionic/storage';
 import { OneSignal } from "@ionic-native/onesignal";
 import { WooCommerceProvider } from '../providers/woocommerce/woocommerce';
 
+// Import ionic2-rating module
+import { Ionic2RatingModule } from 'ionic2-rating';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -30,7 +33,8 @@ import { WooCommerceProvider } from '../providers/woocommerce/woocommerce';
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    Ionic2RatingModule // Put ionic2-rating module here
   ],
   bootstrap: [IonicApp],
   entryComponents: [
