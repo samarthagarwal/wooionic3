@@ -26,7 +26,7 @@ export class HomePage {
     this.page = 2;
 
     this.WooCommerce = WC({
-      url: "http://6204dcc0.ngrok.io",
+      url: "http://67c26ee3.ngrok.io",
       consumerKey: "ck_e1c614aa631216a299e23fe592cdb72669200566",
       consumerSecret: "cs_6f8c8055c349d966ece12115671f24ef9af3da63"
     });
@@ -39,6 +39,10 @@ export class HomePage {
     }, (err) => {
       console.log(err)
     })
+
+    this.WooCommerce.get('products/22/reviews', function (err, data, res) {
+      console.log(res);
+    });
 
   }
 
@@ -86,6 +90,7 @@ export class HomePage {
       console.log(err)
     })
   }
+
 
   openProductPage(product){
     this.navCtrl.push('ProductDetails', {"product": product} );
