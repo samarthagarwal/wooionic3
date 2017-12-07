@@ -3,8 +3,8 @@ import { IonicPage, NavController, Slides, ToastController } from 'ionic-angular
 // import { ProductDetails } from '../product-details/product-details';
 
 import * as WC from 'woocommerce-api';
-import { WooCommerceProvider } from '../../providers/woocommerce/woocommerce';
 // import { SearchPage } from "../search/search";
+import { WoocommerceProvider } from '../../providers/woocommerce/woocommerce';
 
 @IonicPage({})
 @Component({
@@ -21,15 +21,11 @@ export class HomePage {
 
   @ViewChild('productSlides') productSlides: Slides;
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController, private woocommerce: WooCommerceProvider) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, private WP: WoocommerceProvider) {
 
     this.page = 2;
 
-    this.WooCommerce = WC({
-      url: "http://samarth.southeastasia.cloudapp.azure.com",
-      consumerKey: "ck_978c83dd335e861046f05d4b5ae020ff00667044",
-      consumerSecret: "cs_f06f888d7d3d9e02a09b4d40624f222af7b12bc9"
-    });
+    this.WooCommerce = WP.init();
 
     this.loadMoreProducts(null);
 

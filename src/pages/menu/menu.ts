@@ -7,6 +7,7 @@ import * as WC from 'woocommerce-api';
 // import { ProductsByCategory } from '../products-by-category/products-by-category'
 import { Storage } from '@ionic/storage';
 import { Cart } from '../cart/cart';
+import { WoocommerceProvider } from '../../providers/woocommerce/woocommerce';
 
 @IonicPage({})
 @Component({
@@ -22,16 +23,12 @@ export class Menu {
   loggedIn: boolean;
   user: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public modalCtrl: ModalController, private events: Events) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public modalCtrl: ModalController, private events: Events, private WP: WoocommerceProvider) {
     this.homePage = 'HomePage';
     this.categories = [];
     this.user = {};
 
-    this.WooCommerce = WC({
-      url: "http://samarth.southeastasia.cloudapp.azure.com",
-      consumerKey: "ck_a55da2f5918a380ed8565ba180fb04f4ec67f304",
-      consumerSecret: "cs_3a5776160220af80f004a6983942fc5e06de22a4"
-    });
+    this.WooCommerce = WP.init();
 
 
     this.WooCommerce.getAsync("products/categories").then((data) => {
