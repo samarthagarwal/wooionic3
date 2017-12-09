@@ -4,6 +4,7 @@ import * as WC from 'woocommerce-api';
 import { Cart } from '../cart/cart';
 
 import { Storage } from '@ionic/storage';
+import { WoocommerceProvider } from '../../providers/woocommerce/woocommerce';
 
 @IonicPage({})
 @Component({
@@ -16,17 +17,12 @@ export class ProductDetails {
   WooCommerce: any;
   reviews: any[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public toastCtrl: ToastController, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public toastCtrl: ToastController, public modalCtrl: ModalController, private WP: WoocommerceProvider) {
 
     this.product = this.navParams.get("product");
     console.log(this.product);
 
-    this.WooCommerce = WC({
-      url: "http://samarth.southeastasia.cloudapp.azure.com",
-      consumerKey: "ck_a55da2f5918a380ed8565ba180fb04f4ec67f304",
-      consumerSecret: "cs_3a5776160220af80f004a6983942fc5e06de22a4"
-    });
-
+    this.WooCommerce = WP.init();
 
     this.WooCommerce.getAsync('products/' + this.product.id + '/reviews').then((data) => {
 

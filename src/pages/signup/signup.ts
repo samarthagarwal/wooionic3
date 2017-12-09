@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import * as WC from 'woocommerce-api';
+import { WoocommerceProvider } from '../../providers/woocommerce/woocommerce';
 
 @IonicPage({})
 @Component({
@@ -14,7 +15,7 @@ export class Signup {
   billing_shipping_same: boolean;
   WooCommerce: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public alertCtrl: AlertController, private WP: WoocommerceProvider) {
 
     this.newUser.billing_address = {};
     this.newUser.shipping_address = {};
@@ -22,11 +23,7 @@ export class Signup {
 
     //this.newUser.billing_address.country = "India"
 
-    this.WooCommerce = WC({
-      url: "http://samarth.southeastasia.cloudapp.azure.com",
-      consumerKey: "ck_a55da2f5918a380ed8565ba180fb04f4ec67f304",
-      consumerSecret: "cs_3a5776160220af80f004a6983942fc5e06de22a4"
-    });
+    this.WooCommerce = WP.init();
   }
 
   ionViewDidLoad() {
