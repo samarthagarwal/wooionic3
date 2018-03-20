@@ -30,13 +30,21 @@
 
       <p [innerHTML]="product.description"></p>
 
-      <button ion-button icon-left block outline color="danger" (click)="addToCart(product)">
-      <ion-icon name="basket"></ion-icon> Add to Cart for $ {{product.price}}
-    </button>
-
     </ion-card-content>
 
 
+  </ion-card>
+
+  <ion-card *ngIf="product.variations.length > 0">
+    <ion-item-divider color="light">Product options</ion-item-divider>
+    <ng-container *ngFor="let attribute of product.attributes">
+      <ion-item *ngIf="attribute.variation">
+        <ion-label> {{ attribute.name | titlecase }}</ion-label>
+        <ion-select interface="popover" [(ngModel)]="selectedOptions[attribute.name]" (ionChange)="check(attribute.name)">
+          <ion-option *ngFor="let option of attribute.options" [value]="option">{{ option }}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ng-container>
   </ion-card>
 
   <ion-card *ngIf="product.attributes.length > 0">
@@ -96,3 +104,11 @@
   </ion-card>
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button icon-left block outline color="danger" (click)="addToCart(product)">
+      <ion-icon name="basket"></ion-icon> {{ requireOptions ? 'Select Product Options' : 'Add to Cart for ' + '$' + ' ' + productPrice}}
+    </button>
+  </ion-toolbar>
+</ion-footer>

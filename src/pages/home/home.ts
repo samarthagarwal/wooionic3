@@ -38,15 +38,15 @@ export class HomePage {
 
   }
 
-  ionViewDidLoad(){
-    setInterval(()=> {
+  // ionViewDidLoad(){
+  //   setInterval(()=> {
 
-      if(this.productSlides.getActiveIndex() == this.productSlides.length() -1)
-        this.productSlides.slideTo(0);
+  //     if(this.productSlides.getActiveIndex() == this.productSlides.length() -1)
+  //       this.productSlides.slideTo(0);
 
-      this.productSlides.slideNext();
-    }, 3000)
-  }
+  //     this.productSlides.slideNext();
+  //   }, 3000)
+  // }
 
   loadMoreProducts(event){
     console.log(event);
