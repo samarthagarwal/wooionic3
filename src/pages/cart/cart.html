@@ -28,7 +28,12 @@
         <img [src]="item.product.featured_src" style="width: 60px !important; height: 60px !important;"/>
       </ion-thumbnail>
       <h2>{{ item.product.title }}</h2>
-      <p>{{ item.qty }} • {{ item.product.price }}</p>
+
+      <p *ngIf="item.variation"><span *ngFor="let att of item.variation.attributes">{{ att.option | titlecase }} &nbsp;</span></p>
+
+      <p>{{ item.qty }} • 
+        <span *ngIf="!item.variation">{{ item.product.price }}</span>
+        <span *ngIf="item.variation">{{ item.variation.price }}</span></p>
       <!-- <button ion-button clear item-right color="danger" (click)="removeFromCart(item, i)">
         <ion-icon name="close-circle"></ion-icon>
       </button> -->
