@@ -12,12 +12,12 @@
       <ion-item-divider color="danger">Personal Details</ion-item-divider>
       <ion-item>
         <ion-label>First Name</ion-label>
-        <ion-input type="text" [(ngModel)]="newOrder.billing_address.first_name"></ion-input>
+        <ion-input type="text" [(ngModel)]="newOrder.billing.first_name"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Last Name</ion-label>
-        <ion-input type="text" [(ngModel)]="newOrder.billing_address.last_name"></ion-input>
+        <ion-input type="text" [(ngModel)]="newOrder.billing.last_name"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -34,24 +34,24 @@
 
       <ion-item>
         <ion-label>Address Line 1</ion-label>
-        <ion-textarea type="text" maxlength="80" [(ngModel)]="newOrder.billing_address.address_1"></ion-textarea>
+        <ion-textarea type="text" maxlength="80" [(ngModel)]="newOrder.billing.address_1"></ion-textarea>
       </ion-item>
 
       <ion-item>
         <ion-label>Address Line 2</ion-label>
-        <ion-textarea type="text" maxlength="80" [(ngModel)]="newOrder.billing_address.address_2"></ion-textarea>
+        <ion-textarea type="text" maxlength="80" [(ngModel)]="newOrder.billing.address_2"></ion-textarea>
       </ion-item>
 
       <ion-item>
         <ion-label>Country</ion-label>
-        <ion-select [(ngModel)]="newOrder.billing_address.country">
+        <ion-select [(ngModel)]="newOrder.billing.country">
           <ion-option value="India" selected="true">India</ion-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-label>State</ion-label>
-        <ion-select [(ngModel)]="newOrder.billing_address.state">
+        <ion-select [(ngModel)]="newOrder.billing.state">
           <ion-option value="New Delhi">New Delhi</ion-option>
           <ion-option value="Uttar Pradesh">Uttar Pradesh</ion-option>
           <ion-option value="Maharashtra">Maharashtra</ion-option>
@@ -62,17 +62,17 @@
 
       <ion-item>
         <ion-label>City</ion-label>
-        <ion-input type="text" [(ngModel)]="newOrder.billing_address.city"></ion-input>        
+        <ion-input type="text" [(ngModel)]="newOrder.billing.city"></ion-input>        
       </ion-item>
 
       <ion-item>
         <ion-label>Postal Code</ion-label>
-        <ion-input type="number" clearInput [(ngModel)]="newOrder.billing_address.postcode"></ion-input>        
+        <ion-input type="number" clearInput [(ngModel)]="newOrder.billing.postcode"></ion-input>        
       </ion-item>
 
       <ion-item>
         <ion-label>Phone</ion-label>
-        <ion-input type="tel" clearInput [(ngModel)]="newOrder.billing_address.phone"></ion-input>        
+        <ion-input type="tel" clearInput [(ngModel)]="newOrder.billing.phone"></ion-input>        
       </ion-item>
 
       <ion-item>
@@ -84,34 +84,34 @@
       
       <ion-item *ngIf="!billing_shipping_same">
         <ion-label>First Name</ion-label>
-        <ion-input type="text" [(ngModel)]="newOrder.shipping_address.first_name"></ion-input>
+        <ion-input type="text" [(ngModel)]="newOrder.shipping.first_name"></ion-input>
       </ion-item>
 
       <ion-item *ngIf="!billing_shipping_same">
         <ion-label>Last Name</ion-label>
-        <ion-input type="text" [(ngModel)]="newOrder.shipping_address.last_name"></ion-input>
+        <ion-input type="text" [(ngModel)]="newOrder.shipping.last_name"></ion-input>
       </ion-item>
       
       <ion-item *ngIf="!billing_shipping_same">
         <ion-label>Address Line 1</ion-label>
-        <ion-textarea type="text" maxlength="80" [(ngModel)]="newOrder.shipping_address.address_1"></ion-textarea>
+        <ion-textarea type="text" maxlength="80" [(ngModel)]="newOrder.shipping.address_1"></ion-textarea>
       </ion-item>
 
       <ion-item *ngIf="!billing_shipping_same">
         <ion-label>Address Line 2</ion-label>
-        <ion-textarea type="text" maxlength="80" [(ngModel)]="newOrder.shipping_address.address_2"></ion-textarea>
+        <ion-textarea type="text" maxlength="80" [(ngModel)]="newOrder.shipping.address_2"></ion-textarea>
       </ion-item>
 
       <ion-item *ngIf="!billing_shipping_same">
         <ion-label>Country</ion-label>
-        <ion-select [(ngModel)]="newOrder.shipping_address.country">
+        <ion-select [(ngModel)]="newOrder.shipping.country">
           <ion-option value="India" selected="true">India</ion-option>
         </ion-select>
       </ion-item>
 
       <ion-item *ngIf="!billing_shipping_same">
         <ion-label>State</ion-label>
-        <ion-select [(ngModel)]="newOrder.shipping_address.state">
+        <ion-select [(ngModel)]="newOrder.shipping.state">
           <ion-option value="New Delhi">New Delhi</ion-option>
           <ion-option value="Uttar Pradesh">Uttar Pradesh</ion-option>
           <ion-option value="Maharashtra">Maharashtra</ion-option>
@@ -122,17 +122,17 @@
 
       <ion-item *ngIf="!billing_shipping_same">
         <ion-label>City</ion-label>
-        <ion-input type="text" [(ngModel)]="newOrder.shipping_address.city"></ion-input>        
+        <ion-input type="text" [(ngModel)]="newOrder.shipping.city"></ion-input>        
       </ion-item>
 
       <ion-item *ngIf="!billing_shipping_same">
         <ion-label>Postal Code</ion-label>
-        <ion-input type="number" clearInput [(ngModel)]="newOrder.shipping_address.postcode"></ion-input>        
+        <ion-input type="number" clearInput [(ngModel)]="newOrder.shipping.postcode"></ion-input>        
       </ion-item>
 
       <ion-item *ngIf="!billing_shipping_same">
         <ion-label>Phone</ion-label>
-        <ion-input type="tel" clearInput [(ngModel)]="newOrder.shipping_address.phone"></ion-input>        
+        <ion-input type="tel" clearInput [(ngModel)]="newOrder.shipping.phone"></ion-input>        
       </ion-item>
 
       <ion-item-divider color="danger">Payment Details</ion-item-divider>

@@ -23,8 +23,8 @@ export class Checkout {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public alertCtrl: AlertController, public payPal: PayPal, private WP: WoocommerceProvider) {
     this.newOrder = {};
-    this.newOrder.billing_address = {};
-    this.newOrder.shipping_address = {};
+    this.newOrder.billing = {};
+    this.newOrder.shipping = {};
     this.billing_shipping_same = false;
 
     this.paymentMethods = [
@@ -33,17 +33,18 @@ export class Checkout {
       { method_id: "cod", method_title: "Cash on Delivery" },
       { method_id: "paypal", method_title: "PayPal" }];
 
-      this.WooCommerce = WP.init();
+    this.WooCommerce = WP.init(true);
 
     this.storage.get("userLoginInfo").then((userLoginInfo) => {
 
       this.userInfo = userLoginInfo.user;
 
       let email = userLoginInfo.user.email;
+      let id = userLoginInfo.user.id;
 
-      this.WooCommerce.getAsync("customers/email/" + email).then((data) => {
+      this.WooCommerce.getAsync("customers/"+id).then((data) => {
 
-        this.newOrder = JSON.parse(data.body).customer;
+        this.newOrder = JSON.parse(data.body);
 
       })
 
@@ -55,7 +56,7 @@ export class Checkout {
     this.billing_shipping_same = !this.billing_shipping_same;
 
     if (this.billing_shipping_same) {
-      this.newOrder.shipping_address = this.newOrder.billing_address;
+      this.newOrder.shipping = this.newOrder.billing;
     }
 
   }
@@ -81,8 +82,8 @@ export class Checkout {
         paid: true
       },
 
-      billing_address: this.newOrder.billing_address,
-      shipping_address: this.newOrder.shipping_address,
+      billing: this.newOrder.billing,
+      shipping: this.newOrder.shipping,
       customer_id: this.userInfo.id || '',
       line_items: orderItems
     };
@@ -104,8 +105,14 @@ export class Checkout {
 
             let total = 0.00;
             cart.forEach((element, index) => {
-              orderItems.push({ product_id: element.product.id, quantity: element.qty });
-              total = total + (element.product.price * element.qty);
+
+              if(element.variation){
+                orderItems.push({ product_id: element.product.id, variation_id: element.variation.id, quantity: element.qty });
+                total = total + (element.variation.price * element.qty);
+              } else {
+                orderItems.push({ product_id: element.product.id, quantity: element.qty });
+                total = total + (element.product.price * element.qty);
+              }
             });
 
             let payment = new PayPalPayment(total.toString(), 'USD', 'Description', 'sale');
@@ -121,10 +128,10 @@ export class Checkout {
 
               orderData.order = data;
 
-              this.WooCommerce.postAsync('orders', orderData).then((data) => {
+              this.WooCommerce.postAsync('orders', orderData.order).then((data) => {
                 alert("Order placed successfully!");
 
-                let response = (JSON.parse(data.body).order);
+                let response = (JSON.parse(data.body));
 
                 this.alertCtrl.create({
                   title: "Order Placed Successfully",
@@ -159,10 +166,13 @@ export class Checkout {
       this.storage.get("cart").then((cart) => {
 
         cart.forEach((element, index) => {
-          orderItems.push({
-            product_id: element.product.id,
-            quantity: element.qty
-          });
+          if(element.variation){
+            orderItems.push({ product_id: element.product.id, variation_id: element.variation.id, quantity: element.qty });
+            ///total = total + (element.variation.price * element.qty);
+          } else {
+            orderItems.push({ product_id: element.product.id, quantity: element.qty });
+            ///total = total + (element.product.price * element.qty);
+          }
         });
 
         data.line_items = orderItems;
@@ -171,9 +181,9 @@ export class Checkout {
 
         orderData.order = data;
 
-        this.WooCommerce.postAsync("orders", orderData).then((data) => {
+        this.WooCommerce.postAsync("orders", orderData.order).then((data) => {
 
-          let response = (JSON.parse(data.body).order);
+          let response = (JSON.parse(data.body));
 
           this.alertCtrl.create({
             title: "Order Placed Successfully",
