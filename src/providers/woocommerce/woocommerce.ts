@@ -10,15 +10,15 @@ export class WoocommerceProvider {
 
   constructor() {
     this.Woocommerce = WC({
-      url: "http://samarth.southeastasia.cloudapp.azure.com",
-      consumerKey: "ck_a55da2f5918a380ed8565ba180fb04f4ec67f304",
-      consumerSecret: "cs_3a5776160220af80f004a6983942fc5e06de22a4"
+      url: "http://52.66.171.54",
+      consumerKey: "ck_2ec7be12c0191a8a222cb85e89eea6291e0746e1",
+      consumerSecret: "cs_a300ce55d107c61910208ae1d37f4c4978561b87"
     });
 
     this.WoocommerceV2 = WC({
-      url: "http://samarth.southeastasia.cloudapp.azure.com",
-      consumerKey: "ck_a55da2f5918a380ed8565ba180fb04f4ec67f304",
-      consumerSecret: "cs_3a5776160220af80f004a6983942fc5e06de22a4",
+      url: "http://52.66.171.54",
+      consumerKey: "ck_2ec7be12c0191a8a222cb85e89eea6291e0746e1",
+      consumerSecret: "cs_a300ce55d107c61910208ae1d37f4c4978561b87",
       wpAPI: true,
       version: "wc/v2"
     });

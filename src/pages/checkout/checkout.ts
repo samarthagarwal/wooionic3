@@ -76,11 +76,11 @@ export class Checkout {
 
 
     data = {
-      payment_details: {
-        method_id: paymentData.method_id,
-        method_title: paymentData.method_title,
-        paid: true
-      },
+
+      //Fixed a bug here. Updated in accordance with wc/v2 API
+      payment_method: paymentData.method_id,
+      payment_method_title: paymentData.method_title,
+      set_paid: true,
 
       billing: this.newOrder.billing,
       shipping: this.newOrder.shipping,
